@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/modal.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -19,22 +20,49 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
             <br>
-            <select>
-                <option value="bottle">Bottle</option>
-                <option value="funk">Funk</option>
-                <option value="glass">Glass</option>
-                <option value="morse">Morse</option>
-                <option value="pop">Pop</option>
-                <option value="purr">Purr</option>
-                <option value="submarine">Submarine</option>
-                <option value="tink">Tink</option>
-            </select>
         <![endif]-->
 
         <div class="header bg-work">
             <div id="time">00:00</div>
             <a id="trigger" href="#">START</a>
+            <a href="#setting" class="call-modal">setting</a>
         </div>
+
+        <section class="modal semantic-content" id="setting" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+            <div class="modal-inner">
+                <header id="modal-label">Setting</header>
+                <div class="modal-content">
+                    <label for="setting-sound">Sound theme : </label>
+                    <select id="setting-sound">
+                        <option value="bottle">Bottle</option>
+                        <option value="funk">Funk</option>
+                        <option value="glass">Glass</option>
+                        <option value="morse">Morse</option>
+                        <option value="pop">Pop</option>
+                        <option value="purr" selected>Purr</option>
+                        <option value="submarine">Submarine</option>
+                        <option value="tink">Tink</option>
+                    </select>
+                    <br>
+                    <label for="setting-repeat">Alert repeat : </label>
+                    <select id="setting-repeat">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <!-- <footer>
+                    Footer here
+                </footer> -->
+            </div>
+
+            <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+                data-dismiss="modal">×</a>
+                
+        </section>
 
         <footer>
             <p>As the <a href="http://pomodorotechnique.com/" target="blank">Pomodoro technique</a> suggests, take 25-5-25-5-25-5-25-15 work/rest cycle for better productivity (and health).</p>

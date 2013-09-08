@@ -1,13 +1,13 @@
 (function() {
 
-  var seq = [
+  var seqs = [
     1500, 300,
     1500, 300,
     1500, 300,
     1500, 900
   ];
 
-  var debug = [
+  var seq = [
     5, 3,
     5, 3,
     5, 3
@@ -18,6 +18,8 @@
   var headerDiv = selOne('.header');
   var triggerBtn = selOne('#trigger');
   var timeDisplay = selOne('#time');
+  var soundOption = selOne('#setting-sound');
+  var repeatOption = selOne('#setting-repeat');
 
   var timer = new Timer({
     tick: 1
@@ -47,7 +49,10 @@
     // start next
     triggerBtn.text = 'START';
     count++;
-    playAlert('bottle');
+    var _repeat = repeatOption.options[repeatOption.selectedIndex].value;
+    for (var _i; _i < _repeat; _i++) {
+      playAlert(soundOption.options[soundOption.selectedIndex].value);
+    }
     if (count < seq.length) {
       timer.start(seq[count]);
     } else {

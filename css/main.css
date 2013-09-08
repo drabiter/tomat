@@ -101,6 +101,15 @@ textarea {
     color: #eee;
 }
 
+.call-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-right: 1em;
+    font-weight: bold;
+    color: #eee;
+}
+
 footer {
     text-align: center;
     font-weight: 200;
