@@ -50,8 +50,11 @@
     triggerBtn.text = 'START';
     count++;
     var _repeat = repeatOption.options[repeatOption.selectedIndex].value;
-    for (var _i; _i < _repeat; _i++) {
-      playAlert(soundOption.options[soundOption.selectedIndex].value);
+    var _sound = soundOption.options[soundOption.selectedIndex].value;
+    for (var _i = 0; _i < _repeat; _i++) {
+      setTimeout(function() {   
+        playAlert(_sound);
+      }, 500 * _i);
     }
     if (count < seq.length) {
       timer.start(seq[count]);

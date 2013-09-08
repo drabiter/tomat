@@ -110,6 +110,16 @@ textarea {
     color: #eee;
 }
 
+.form-line {
+    display: block;
+    width: 100%;
+}
+
+.form-line label {
+    width: 50%;
+    float: left;
+}
+
 footer {
     text-align: center;
     font-weight: 200;
