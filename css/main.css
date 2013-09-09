@@ -131,6 +131,10 @@ a {
     text-decoration: none;
 }
 
+.selected {
+    font-weight: bold;
+}
+
 
 
 

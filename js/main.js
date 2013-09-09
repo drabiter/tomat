@@ -1,13 +1,13 @@
 (function() {
 
-  var seq = [
+  var seqa = [
     1500, 300,
     1500, 300,
     1500, 300,
     1500, 900
   ];
 
-  var debug = [
+  var seq = [
     5, 3,
     5, 3,
     5, 3
@@ -15,11 +15,11 @@
 
   var count = 0;
 
-  var headerDiv = selOne('.header');
-  var triggerBtn = selOne('#trigger');
-  var timeDisplay = selOne('#time');
-  var soundOption = selOne('#setting-sound');
-  var repeatOption = selOne('#setting-repeat');
+  var headerDiv = seldom.selOne('.header');
+  var triggerBtn = seldom.selOne('#trigger');
+  var timeDisplay = seldom.selOne('#time');
+  var soundOption = seldom.selOne('#setting-sound');
+  var repeatOption = seldom.selOne('#setting-repeat');
 
   var timer = new Timer({
     tick: 1
@@ -34,6 +34,8 @@
     // change button's text
     triggerBtn.text = 'PAUSE';
     headerDiv.classList.remove('bg-mute');
+    seldom.selOne('.selected').classList.remove('selected');
+    seldom.selOne('#t' + count).classList.add('selected');
     if (count % 2 == 0) {
       // work
       headerDiv.classList.add('bg-work');
@@ -56,6 +58,7 @@
         playAlert(_sound);
       }, 500 * _i);
     }
+
     if (count < seq.length) {
       timer.start(seq[count]);
     } else {
