@@ -15,11 +15,11 @@
 
   var count = 0;
 
-  var headerDiv = seldom.selOne('.header');
-  var triggerBtn = seldom.selOne('#trigger');
-  var timeDisplay = seldom.selOne('#time');
-  var soundOption = seldom.selOne('#setting-sound');
-  var repeatOption = seldom.selOne('#setting-repeat');
+  var headerDiv = seldom.sel('.header');
+  var triggerBtn = seldom.sel('#trigger');
+  var timeDisplay = seldom.sel('#time');
+  var soundOption = seldom.sel('#setting-sound');
+  var repeatOption = seldom.sel('#setting-repeat');
 
   var timer = new Timer({
     tick: 1
@@ -32,10 +32,10 @@
 
   timer.on('start', function() {
     // change button's text
-    triggerBtn.text = 'PAUSE';
+    seldom.setText(triggerBtn, 'PAUSE');
     headerDiv.classList.remove('bg-mute');
-    seldom.selOne('.selected').classList.remove('selected');
-    seldom.selOne('#t' + count).classList.add('selected');
+    seldom.sel('.selected').classList.remove('selected');
+    seldom.sel('#t' + count).classList.add('selected');
     if (count % 2 == 0) {
       // work
       headerDiv.classList.add('bg-work');
@@ -49,8 +49,8 @@
 
   timer.on('end', function() {
     // start next
-    triggerBtn.text = 'START';
-    count++;
+    seldom.setText(triggerBtn, 'START');
+    
     var _repeat = repeatOption.options[repeatOption.selectedIndex].value;
     var _sound = soundOption.options[soundOption.selectedIndex].value;
     for (var _i = 0; _i < _repeat; _i++) {
@@ -59,6 +59,7 @@
       }, 500 * _i);
     }
 
+    count++;
     if (count < seq.length) {
       timer.start(seq[count]);
     } else {
@@ -68,7 +69,7 @@
 
   timer.on('pause', function() {
     // change button's text
-    triggerBtn.text = 'RESUME';
+    seldom.setText(triggerBtn, 'RESUME');
     headerDiv.classList.remove('bg-work');
     headerDiv.classList.remove('bg-rest');
     headerDiv.classList.add('bg-mute');
