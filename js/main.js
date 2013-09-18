@@ -109,7 +109,7 @@
   function playSound(id, repeat) {
     createjs.Sound.play(id, 
       createjs.Sound.NONE, 
-      0, 0, repeat || 1, 1, 0);
+      0, 0, repeat || 0, 1, 0);
   }
 
 }).call(this);
