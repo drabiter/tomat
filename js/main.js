@@ -1,13 +1,13 @@
 (function() {
 
-  var seqs = [
+  var seq = [
     1500, 300,
     1500, 300,
     1500, 300,
     1500, 900
   ];
 
-  var seq = [
+  var debug = [
     5, 3,
     5, 3,
     5, 3
