@@ -1,24 +1,34 @@
 (function() {
 
-  var seq = [
+  var seqs = [
     1500, 300,
     1500, 300,
     1500, 300,
     1500, 900
   ];
 
-  // var debug = [
-  //   5, 3,
-  //   5, 3,
-  //   5, 3
-  // ];
+  var seq = [
+    5, 3,
+    5, 3,
+    5, 3
+  ];
+
+  var audioPath = 'assets/proximity';
+  var manifest = [
+    {id: 'Alert1', src: audioPath + '.mp3|' + audioPath + '.ogg'}
+  ];
+
+  // Force createjs to start load the sounds now
+  (function init() {
+    if (!createjs.Sound.initializeDefaultPlugins()) {return;}
+    createjs.Sound.registerManifest(manifest);
+  })();
 
   var count = 0;
 
   var headerDiv = seldom.sel('.header');
   var triggerBtn = seldom.sel('#trigger');
   var timeDisplay = seldom.sel('#time');
-  var soundOption = seldom.sel('#setting-sound');
   var repeatOption = seldom.sel('#setting-repeat');
 
   var timer = new Timer({
@@ -52,12 +62,7 @@
     seldom.setText(triggerBtn, 'START');
     
     var _repeat = repeatOption.options[repeatOption.selectedIndex].value;
-    var _sound = soundOption.options[soundOption.selectedIndex].value;
-    for (var _i = 0; _i < _repeat; _i++) {
-      setTimeout(function() {   
-        playAlert(_sound);
-      }, 500 * _i);
-    }
+    playSound('Alert1', _repeat);
 
     count++;
     if (count < seq.length) {
@@ -85,7 +90,7 @@
     }
   }
 
-  var format = function(time) {
+  function format(time) {
     var text = '';
     var _minute = Math.floor(time / 60);
     if (_minute < 10) {
@@ -99,6 +104,12 @@
     }
     text += _second;
     return text;
+  }
+
+  function playSound(id, repeat) {
+    createjs.Sound.play(id, 
+      createjs.Sound.NONE, 
+      0, 0, repeat || 1, 1, 0);
   }
 
 }).call(this);
